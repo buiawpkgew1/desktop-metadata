@@ -85,7 +85,6 @@ jobs:
         draft: false
         prerelease: ${{ env.IS_PRERELEASE == 'true' }}
         artifacts: './tmp/release/*'
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
     - name: 推送元数据更改
       run: |
