@@ -48,14 +48,14 @@ jobs:
             throw new Error('No CI build number provided or found.');
           }
           const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
-            owner: 'zetaloop',
+            owner: 'wsdfafw',
             repo: 'desktop',
             run_id: runId,
           });
           fs.mkdirSync('./tmp', { recursive: true });
           for (const artifact of artifacts.data.artifacts) {
             const download = await github.rest.actions.downloadArtifact({
-              owner: 'zetaloop',
+              owner: 'wsdfafw',
               repo: 'desktop',
               artifact_id: artifact.id,
               archive_format: 'zip',
