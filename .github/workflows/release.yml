@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       ci-build-number:
-        description: 'CI Build Number (optional)'
+        description: 'CI 构建编号（可选）'
         required: false
         default: ''
 
@@ -22,7 +22,7 @@ jobs:
       with:
         script: |
           const { data } = await github.rest.actions.listWorkflowRunsForRepo({
-            owner: 'zetaloop',
+            owner: 'wsdfafw',
             repo: 'desktop',
             workflow_id: 'ci.yml',
             status: 'success',
