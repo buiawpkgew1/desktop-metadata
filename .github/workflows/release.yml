@@ -74,7 +74,13 @@ jobs:
 
     - name: 运行 Python 脚本
       run: python update.py
-
+    - name: 推送元数据更改
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add ./metadata
+        git commit -m "Update metadata from CI ${{ github.event.inputs.ci-build-number || steps.get-latest-build.outputs.ci-build-id }}"
+        git push
     - name: 创建发布
       uses: ncipollo/release-action@v1
       with:
@@ -85,11 +91,3 @@ jobs:
         draft: false
         prerelease: ${{ env.IS_PRERELEASE == 'true' }}
         artifacts: './tmp/release/*'
-
-    - name: 推送元数据更改
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add ./metadata
-        git commit -m "Update metadata from CI ${{ github.event.inputs.ci-build-number || steps.get-latest-build.outputs.ci-build-id }}"
-        git push
