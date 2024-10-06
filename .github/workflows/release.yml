@@ -84,7 +84,7 @@ jobs:
     - name: 创建发布
       uses: ncipollo/release-action@v1
       with:
-        repo: 'desktop'
+        # repo: 'desktop'
         tag: release-${{ env.DESKTOP_VERSION }}
         name: GitHub Desktop ${{ env.DESKTOP_VERSION }}
         bodyFile: './tmp/release_body.txt'
